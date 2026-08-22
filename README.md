@@ -4,7 +4,7 @@ This is a Python App which reconstructs a Garmin basecamp backup to a local dire
 Up to now it does not reconstruct Routs, Adventures or Birdseye data.
 
 The document
-https://www.memotech.franken.de/FileFormats/Garmin_MPS_GDB_and_GFI_Format.pdf from Herbert Oppmann was very helpful when analyzing the .gdb and .gfi file structuures.
+https://www.memotech.franken.de/FileFormats/Garmin_MPS_GDB_and_GFI_Format.pdf from Herbert Oppmann was very helpful when analyzing the .gdb and .gfi file structures.
 
 This is the initial version of this App
 
