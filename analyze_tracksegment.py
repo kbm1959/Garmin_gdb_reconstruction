@@ -6,7 +6,7 @@ from garmin_analyzer import *
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Analyze a Garmin tracksegment file.")
-    parser.add_argument("--filename", default="4.7/AllData.gdb", help="Path to the  file")
+    parser.add_argument("--filename", default="4.7/TrackSegments/df8d7d0f-6a88-4077-aa38-2ccff64a5425", help="Path to the  file")
     parser.add_argument("--log", action='store_true', help="Log record contents (log_records)")
     return parser.parse_args()
 
@@ -26,7 +26,7 @@ def main():
     timestamps = []
     for i in range(gd.data_pos, len(gd.data) - 4):
         potential_timestamp = int.from_bytes(gd.data[i:i + 4], byteorder='little')
-        if 1777392480 <= potential_timestamp <= 1777393380:  # Between Jan 1, 2000 and Jan 1, 2100
+        if 1777392278 <= potential_timestamp <= 1777393478:  # Between Jan 1, 2000 and Jan 1, 2100
             timestamps.append((i, potential_timestamp))
     print("Timestamps found:")
     for pos, ts in timestamps:

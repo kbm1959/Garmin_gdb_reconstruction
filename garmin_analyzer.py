@@ -10,7 +10,13 @@ https://www.memotech.franken.de/FileFormats/Garmin_MPS_GDB_and_GFI_Format.pdf
 
 Beispiel:
     analyzer = GarminAnalyzer("example.gdb", log_records=True)
-    analyzer.analyze_recordtypes(analyzer.records)
+    
+    analyzer.records enthält die eingelesenen Daten
+
+Das Modul enthält auch die Funktionen disp_hex_ascii und check_for_double, die für die Analyse von Binärdaten nützlich sind.
+
+Dies ist die erste Version der Klasse, die primär für Testzwecke quick and dirty implementiert wurde.
+Die finale Version befindet sich im file garmin_tools.py, die auch die Klasse GarminAnalyzer enthält.
 
 """
 import struct

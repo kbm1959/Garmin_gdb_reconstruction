@@ -19,3 +19,17 @@ This is a work in progress and will be updated as more information is discovered
 Code Version: 0.1
 date: 2026-08-22
 """
+
+from garmin_tools import GarminAnalyzer
+
+# read AllData.gdb and FolderData.gfi from the directory path given
+db = GarminAnalyzer('4.7_small/')
+
+# reconstruct the directory structure of the Garmin database
+# analyze the AllData.gdb and FolderData.gfi records
+# create the gpx xml structure of the waypoints
+# save the waypoints in the folderstructure
+db.restore_waypoints()
+
+
+#db.restore_tracks()
