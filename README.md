@@ -7,13 +7,14 @@ The document
 https://www.memotech.franken.de/FileFormats/Garmin_MPS_GDB_and_GFI_Format.pdf from Herbert Oppmann was very helpful when analyzing the .gdb and .gfi file structures.
 https://www.memotech.franken.de/FileFormats/Garmin_MPS_GDB_and_GFI_Format.pdf from Herbert Oppmann was very helpful when analyzing the .gdb and .gfi file structures.
 
-This is the initial version of this App
+This is the first production version of this App
+I managed to reconstruct the folder structure and all waypoints and tracks from a Garmin Basecamp V 4.7.5 database 
 
-Version 0.2 (beta)
-Date 2026-08-26
-- complete reconstruction of folder-strcuture and waypoints within folders implemented
+Version 0.3 (beta)
+Date 2026-09-15
+- complete reconstruction of folder-structure and tracks and waypoints within folders implemented
 
-- todo: implementation of restoring track data into folder structure
+- known issues: Routes are not yet handled, since the analysis of their binary structure in the DB is not straightforward
 
 Description of the files:
 

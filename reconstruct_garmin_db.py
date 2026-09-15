@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 Uses the GarminAnalyzer Class to reconstruct a Garmin database from Garmin Basecamp Version 4.7. 
 By default it uses the files Alldata.gdb and FolderData.gfi from the directory path given in the --filename argument.
@@ -16,20 +18,31 @@ The document can be found at: https://www.memotech.franken.de/FileFormats/Garmin
 
 This is a work in progress and will be updated as more information is discovered about the Garmin database file format.
 
-Code Version: 0.1
-date: 2026-08-22
+Code Version: 0.3
+date: 2026-09-15s
 """
 
 from garmin_tools import GarminAnalyzer
 
 # read AllData.gdb and FolderData.gfi from the directory path given
-db = GarminAnalyzer('4.7_small/')
+db = GarminAnalyzer('4.7/')
 
 # reconstruct the directory structure of the Garmin database
-# analyze the AllData.gdb and FolderData.gfi records
-# create the gpx xml structure of the waypoints
-# save the waypoints in the folderstructure
-db.restore_waypoints()
+# using the F and I records in the FolderData.gfi file to build the folder tree
+db.build_folder_tree(db.gfi_f_records['root'], folder_path='./waypoints/', build_tree=True)
 
+print("Directory structure built successfully.")
+# restore waypoints from the W records in the AllData.gdb and the FolderData.gfi file
+# create the gpx xml structure of the waypoints from the W records in the AllData.gdb file
+# save the waypoints in the folderstructure using the W records in the FolderData.gfi file
+count = db.restore_waypoints()
+print(f"Restored {count} waypoints.")
 
-#db.restore_tracks()
+# store the tracks in a different folder
+db.build_folder_tree(db.gfi_f_records['root'], folder_path='./tracks/', build_tree=True)
+
+# restore tracks from the T records in the AllData.gdb and the FolderData.gfi file
+# create the gpx xml structure of the tracks from the T records in the AllData.gdb file and the track segments in the TrackSegments directory
+# save the tracks in the folderstructure using the T records in the FolderData.gfi file
+count = db.restore_tracks()
+print(f"Restored {count} tracks.")
